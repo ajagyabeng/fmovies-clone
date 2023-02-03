@@ -14,6 +14,7 @@ IMDB_API_KEY = os.getenv("IMDB-API-KEY")
 
 top_movies_url = f"https://imdb-api.com/en/API/MostPopularMovies/{IMDB_API_KEY}"
 update_movies_url = f"https://imdb-api.com/en/API/Title/{IMDB_API_KEY}/"
+update_movies_banner_img = f"https://imdb-api.com/en/API/Images/{IMDB_API_KEY}/"
 
 app = Flask(__name__)
 setup_db(app)
