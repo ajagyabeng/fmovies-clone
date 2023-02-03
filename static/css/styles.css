@@ -1,18 +1,17 @@
 #top-bar {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
 #search-input {
-    width: 300px;
-    height: 2.8rem;
-    border-style: none;
-    background-color: black;
-    margin-right: 160px;
+  width: 300px;
+  height: 2.8rem;
+  border-style: none;
+  background-color: white;
+  opacity: 0.2;
+  margin-right: 160px;
 }
 
 #card-hd {
   font-size: small;
   font-weight: 500;
 }
-
-
