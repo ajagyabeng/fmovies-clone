@@ -48,7 +48,7 @@ def update_movie_details():
 @app.route("/add-banner")
 def update_banner():
     movies = Movies.query.all()
-    for movie in movies[:20]:
+    for movie in movies:
         movie_details = requests.get(f"{update_movies_banner_img}{movie.movie_id}").json()
         img = first_item(movie_details["items"])
         movie_to_update = Movies.query.filter_by(movie_id=movie.movie_id).first()
