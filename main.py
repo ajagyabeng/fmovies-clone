@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 import requests
-from models import setup_db, db_drop_and_create_all, Movies, add_book, update_details
+from models import setup_db, db_drop_and_create_all, Movies, add_book, update_details, first_item
 import os
 from dotenv import find_dotenv, load_dotenv
 
@@ -42,4 +42,15 @@ def update_movie_details():
         movie_details = requests.get(f"{update_movies_url}{movie.movie_id}").json()
         movie_to_update = Movies.query.filter_by(movie_id=movie.movie_id).first()
         update_details(movie_to_update, movie_details)
+    return "Done"
+
+
+@app.route("/add-banner")
+def update_banner():
+    movies = Movies.query.all()
+    for movie in movies[:20]:
+        movie_details = requests.get(f"{update_movies_banner_img}{movie.movie_id}").json()
+        img = first_item(movie_details["items"])
+        movie_to_update = Movies.query.filter_by(movie_id=movie.movie_id).first()
+        update_details(movie_to_update, img)
     return "Done"
