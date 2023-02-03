@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-<!--    <link rel="stylesheet" href="https://kit.fontawesome.com/f537a829ef.css" crossorigin="anonymous">-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
+
 <body>
     <div class="position-relative">
         <section id="top-bar" class="position-absolute z-3">
             <nav class="navbar navbar-expand-sm">
                 <div class="container-fluid">
-                    <a href=""><img src="https://s1.bunnycdn.ru/assets/sites/fmovies/logo2.png" alt="fmovies logo" width="140"></a>
+                    <a href=""><img src="https://s1.bunnycdn.ru/assets/sites/fmovies/logo2.png" alt="fmovies logo"
+                            width="140"></a>
                     <div class="collapse navbar-collapse ms-4" id="navbarNav">
                         <ul class="banner-lists navbar-nav ">
                             <li class="nav-item mx-2"><a class="nav-link" href="">Home</a></li>
@@ -25,175 +28,173 @@
                     </div>
                     <input type="text" placeholder="Enter your keywords..." class="rounded-5" id="search-input">
 
-                    <a href="" id="login-register"><i class="fa-solid fa-circle-user"></i>Login/Register</a>
+                    <a href="" id="login-register"><i class="fa-solid fa-2x fa-circle-user"></i>Login/Register</a>
                 </div>
             </nav>
         </section>
         <section id="mov-slides">
-            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="{{ rec_mov.items[0].image }}" class="d-block w-100" alt="..." height="500">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>{{ rec_mov.items[0].title }}</h3>
-                        <div>
-                            <ul class="banner-lists">
-                                <li>HD/TS/SD/CAM</li>
-                                <li>{{ rec_mov.items[0].rating }}</li>
-                                <li>{{rec_mov.items[0].duration}}mins</li>
-                                <li>{{ rec_mov.items[0].genre }}</li>
-                            </ul>
-                            <p>{{ rec_mov.items[0].summary }}</p>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ rec_mov.items[0].image }}" class="d-block w-100" alt="..." height="500">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>{{ rec_mov.items[0].title }}</h3>
+                            <div class="banner-items">
+                                <p>
+                                    <span>HD</span> <span>{{ rec_mov.items[0].rating }}</span>
+                                    <span>{{rec_mov.items[0].duration}}mins</span> <span>{{
+                                        rec_mov.items[0].genre}}</span>
+                                </p>
+                                <p>{{ rec_mov.items[0].summary }}</p>
+                            </div>
+                            <a class="btn btn-outline-primary">Watch Now</a>
+                            <a class="btn btn-outline-secondary">Add to list</a>
                         </div>
-                        <a class="btn btn-outline-primary">Watch Now</a>
-                        <a class="btn btn-outline-secondary">Add to list</a>
                     </div>
-                </div>
-                  {% for movie in rec_mov.items[1:10] %}
-                <div class="carousel-item">
-                  <img src="{{ movie.image }}" class="d-block w-100" alt="..." height="500">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h3>{{ movie.title }}</h3>
-                        <div>
-                            <ul class="banner-lists">
-                                <li>HD/TS/SD/CAM</li>
-                                <li>{{ movie.rating }}</li>
-                                <li>{{movie.duration}}mins</li>
-                                <li>{{ movie.genre }}</li>
-                            </ul>
-                            <p>{{ movie.summary }}</p>
+                    {% for movie in rec_mov.items[1:10] %}
+                    <div class="carousel-item">
+                        <img src="{{ movie.image }}" class="d-block w-100" alt="..." height="500">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>{{ movie.title }}</h3>
+                            <div class="banner-items">
+                                <p>
+                                    <span>HD</span> <span>{{ movie.rating }}</span>
+                                    <span>{{movie.duration}}mins</span> <span>{{
+                                        movie.genre}}</span>
+                                </p>
+                                <p>{{ movie.summary }}</p>
+                            </div>
+                            <a class="btn btn-outline-primary">Watch Now</a>
+                            <a class="btn btn-outline-secondary">Add to list</a>
                         </div>
-                        <a class="btn btn-outline-primary">Watch Now</a>
-                        <a class="btn btn-outline-secondary">Add to list</a>
                     </div>
+                    {% endfor %}
                 </div>
-                  {% endfor %}
-              </div>
-              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-              </button>
             </div>
         </section>
+
     </div>
-        <hr>
-        <section id="fmovies-description">
-            <h3>Watch Movies Online Free</h3>
-            <p>
-                fmovies.to - Just a better place to watch movies online for free. It allows you to watch movies online in high quality for free. No registration is required. The content is updated daily with fast streaming servers, multi-language subtitles supported. Just open fmovies.to and watch your favorite movies, tv-shows. We have almost any movie, tv-shows you want to watch!
-                Please bookmark fmovies.name to update about fmovies domains.
-                Please help us by sharing this site with your friends. Thanks!
-            </p>
-            <ul class="banner-lists" >
-                <li><a href="">Facebook</a></li>
-                <li><a href="">Twitter</a></li>
-                <li><a href="">Email</a></li>
-                <li><a href="">Pinterest</a></li>
-                <li><a href="">Whatsapp</a></li>
-                <li><a href="">Telegram</a></li>
-                <li><a href="">More</a></li>
+    <hr>
+    <section id="fmovies-description">
+        <h3>Watch Movies Online Free</h3>
+        <p>
+            fmovies.to - Just a better place to watch movies online for free. It allows you to watch movies online in
+            high quality for free. No registration is required. The content is updated daily with fast streaming
+            servers, multi-language subtitles supported. Just open fmovies.to and watch your favorite movies, tv-shows.
+            We have almost any movie, tv-shows you want to watch!
+            Please bookmark fmovies.name to update about fmovies domains.
+            Please help us by sharing this site with your friends. Thanks!
+        </p>
+        <ul class="banner-lists">
+            <li><a href="">Facebook</a></li>
+            <li><a href="">Twitter</a></li>
+            <li><a href="">Email</a></li>
+            <li><a href="">Pinterest</a></li>
+            <li><a href="">Whatsapp</a></li>
+            <li><a href="">Telegram</a></li>
+            <li><a href="">More</a></li>
+        </ul>
+    </section>
+    <hr>
+    <section id="rec-mov">
+        <h1>Recommended</h1>
+        <div id="filter">
+            <ul>
+                <li><a href="">Movies</a></li>
+                <li><a href="">TV Shows</a></li>
+                <li><a href="">Trending</a></li>
             </ul>
-        </section>
-        <hr>
-        <section id="rec-mov">
-            <h1>Recommended</h1>
-            <div id="filter">
-                <ul>
-                    <li><a href="">Movies</a></li>
-                    <li><a href="">TV Shows</a></li>
-                    <li><a href="">Trending</a></li>
-                </ul>
-            </div>
+        </div>
 
-            <div class="row">
-                {% for movie in rec_mov %}
-                <div class="col-4 col-md-3 col-lg-2 movie-item">
-                    <div class="position-relative mov-card card border-0">
-                        <img src="{{ movie.image }}" class="card-img-top rounded-bottom" alt="" width="205.7" height="298.27">
-                        <span class="position-absolute top-0 end-0 bg-white m-2 px-1 rounded-1" id="card-hd">HD</span>
-                        <div class="card-body">
-                            <h6 class="card-title">{{ movie.title }}</h6>
-                            <p>{{ movie.year }} ▪ {{movie.duration}} mins <span>Movie</span> </p>
-                        </div>
+        <div class="row">
+            {% for movie in rec_mov %}
+            <div class="col-4 col-md-3 col-lg-2 movie-item">
+                <div class="position-relative mov-card card border-0">
+                    <img src="{{ movie.image }}" class="card-img-top rounded-bottom" alt="" width="205.7"
+                        height="298.27">
+                    <span class="position-absolute top-0 end-0 bg-white m-2 px-1 rounded-1" id="card-hd">HD</span>
+                    <div class="card-body">
+                        <h6 class="card-title">{{ movie.title }}</h6>
+                        <p>{{ movie.year }} ▪ {{movie.duration}} mins <span>Movie</span> </p>
                     </div>
                 </div>
-                {% endfor %}
             </div>
+            {% endfor %}
+        </div>
 
-            <div class="summary-card">
-                <!-- POPS UP WHEN MOVIE CARD IS HOVERED ON -->
-                <h3>Pop-up Box details when movie is hovered with mouse</h3>
-                <p class="summary-card-title">Title goes here</p>
-                <p>Rating goes here</p>
-                <p>Year Goes here</p>
-                <p>length of movie in minutes goes here</p>
-                <p>Movie quality goes here</p>
-                <p>Movie summary goes here</p>
-                <p>Country shot at goes here</p>
-                <p>Genre goes here</p>
-                <a href="">Watch now</a>
-                <button>Favorite button goes here</button>
-            </div>
-        </section>
+        <div class="summary-card">
+            <!-- POPS UP WHEN MOVIE CARD IS HOVERED ON -->
+            <h3>Pop-up Box details when movie is hovered with mouse</h3>
+            <p class="summary-card-title">Title goes here</p>
+            <p>Rating goes here</p>
+            <p>Year Goes here</p>
+            <p>length of movie in minutes goes here</p>
+            <p>Movie quality goes here</p>
+            <p>Movie summary goes here</p>
+            <p>Country shot at goes here</p>
+            <p>Genre goes here</p>
+            <a href="">Watch now</a>
+            <button>Favorite button goes here</button>
+        </div>
+    </section>
+    <hr>
+    <section id="movies">
+        <h1>Latest Movies</h1>
+        <a href="">View all</a>
         <hr>
-        <section id="movies">
-            <h1>Latest Movies</h1>
-            <a href="">View all</a>
-            <hr>
-            <div class="mov-card">
-                <img src="" alt="">
-                <p>Movie quality goes here</p>
-                <p>Title Goes Heres</p>
-                <p>Year of release goes here</p>
-                <p>length of movie in minutes goes here</p>
-                <p>Tag goes here: Movie/TV</p>
-            </div>
-            <div class="summary-card">
-                <!-- POPS UP WHEN MOVIE CARD IS HOVERED ON -->
-                <p class="summary-card-title">Title goes here</p>
-                <p>Rating goes here</p>
-                <p>Year Goes here</p>
-                <p>length of movie in minutes goes here</p>
-                <p>Movie quality goes here</p>
-                <p>Movie summary goes here</p>
-                <p>Country shot at goes here</p>
-                <p>Genre goes here</p>
-                <a href="">Watch now</a>
-                <button>Favorite button goes here</button>
-            </div>
-        </section>
-        <section id="tv-series">
-            <h1>Latest TV-Series</h1>
-            <a href="">View all</a>
-            <hr>
-            <div class="mov-card">
-                <img src="" alt="">
-                <p>Movie quality goes here</p>
-                <p>Title Goes Heres</p>
-                <p>Season goes here: SS 16</p>
-                <p>Episode goes here: E 12</p>
-                <p>Tag goes here: TV</p>
-            </div>
-            <div class="summary-card">
-                <!-- POPS UP WHEN MOVIE CARD IS HOVERED ON -->
-                <p class="summary-card-title">Title goes here</p>
-                <p>Rating goes here</p>
-                <p>Year Goes here</p>
-                <p>length of movie in minutes goes here</p>
-                <p>Movie quality goes here</p>
-                <p>Movie summary goes here</p>
-                <p>Country shot at goes here</p>
-                <p>Genre goes here</p>
-                <a href="">Watch now</a>
-                <button>Favorite button goes here</button>
-            </div>
-        </section>
+        <div class="mov-card">
+            <img src="" alt="">
+            <p>Movie quality goes here</p>
+            <p>Title Goes Heres</p>
+            <p>Year of release goes here</p>
+            <p>length of movie in minutes goes here</p>
+            <p>Tag goes here: Movie/TV</p>
+        </div>
+        <div class="summary-card">
+            <!-- POPS UP WHEN MOVIE CARD IS HOVERED ON -->
+            <p class="summary-card-title">Title goes here</p>
+            <p>Rating goes here</p>
+            <p>Year Goes here</p>
+            <p>length of movie in minutes goes here</p>
+            <p>Movie quality goes here</p>
+            <p>Movie summary goes here</p>
+            <p>Country shot at goes here</p>
+            <p>Genre goes here</p>
+            <a href="">Watch now</a>
+            <button>Favorite button goes here</button>
+        </div>
+    </section>
+    <section id="tv-series">
+        <h1>Latest TV-Series</h1>
+        <a href="">View all</a>
+        <hr>
+        <div class="mov-card">
+            <img src="" alt="">
+            <p>Movie quality goes here</p>
+            <p>Title Goes Heres</p>
+            <p>Season goes here: SS 16</p>
+            <p>Episode goes here: E 12</p>
+            <p>Tag goes here: TV</p>
+        </div>
+        <div class="summary-card">
+            <!-- POPS UP WHEN MOVIE CARD IS HOVERED ON -->
+            <p class="summary-card-title">Title goes here</p>
+            <p>Rating goes here</p>
+            <p>Year Goes here</p>
+            <p>length of movie in minutes goes here</p>
+            <p>Movie quality goes here</p>
+            <p>Movie summary goes here</p>
+            <p>Country shot at goes here</p>
+            <p>Genre goes here</p>
+            <a href="">Watch now</a>
+            <button>Favorite button goes here</button>
+        </div>
+    </section>
 
-<script src="https://kit.fontawesome.com/f537a829ef.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f537a829ef.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
