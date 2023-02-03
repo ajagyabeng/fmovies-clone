@@ -47,8 +47,21 @@ def update_details(movie_to_update, movie_details):
     # movie_to_update.genre = movie_details["genres"]
     # movie_to_update.summary = movie_details["plot"]
     # movie_to_update.country = movie_details["countries"]
-    movie_to_update.banner_img = movie_details[""]
+
+    # this is for just the banner images
+    movie_to_update.banner_img = movie_details
     db.session.commit()
+
+
+def first_item(items_list):
+    """
+    checks the imdb api result if the image has the right resolution
+    :param items_list: list of image result from imdb api
+    :return:
+    """
+    for item in items_list:
+        if item["image"].endswith("Ratio1.5000_AL_.jpg") or item["image"].endswith("Ratio1.4600_AL_.jpg") or item["image"].endswith("Ratio1.7600_AL_.jpg"):
+            return item["image"]
 
 
 class Movies(db.Model):
