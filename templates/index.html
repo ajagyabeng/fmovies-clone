@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="static/css/styles.css">
 </head>
 <body>
-    <div class="mx-4">
+    <div class="">
         <section id="top-bar">
             <nav class="navbar navbar-expand-sm">
                 <div class="container-fluid">
@@ -29,19 +29,55 @@
                 </div>
             </nav>
         </section>
-        <hr>
         <section id="mov-slides">
-            <div id="description">
-                <h1>Movie title goes here</h1>
-                <p id="mov-quality">HD/TS/SD/CAM</p>
-                <p id="rating">Movie rating goes here</p>
-                <ul class="banner-lists">
-                    <li>Movie genre goes here</li>
-                </ul>
-                <p>Movie summary goes here</p>
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="{{ rec_mov.items[0].image }}" class="d-block w-100" alt="..." height="500">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>{{ rec_mov.items[0].title }}</h3>
+                        <div>
+                            <ul class="banner-lists">
+                                <li>HD/TS/SD/CAM</li>
+                                <li>{{ rec_mov.items[0].rating }}</li>
+                                <li>{{rec_mov.items[0].duration}}mins</li>
+                                <li>{{ rec_mov.items[0].genre }}</li>
+                            </ul>
+                            <p>{{ rec_mov.items[0].summary }}</p>
+                        </div>
+                        <a class="btn btn-outline-primary">Watch Now</a>
+                        <a class="btn btn-outline-secondary">Add to list</a>
+                    </div>
+                </div>
+                  {% for movie in rec_mov.items[1:10] %}
+                <div class="carousel-item">
+                  <img src="{{ movie.image }}" class="d-block w-100" alt="..." height="500">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h3>{{ movie.title }}</h3>
+                        <div>
+                            <ul class="banner-lists">
+                                <li>HD/TS/SD/CAM</li>
+                                <li>{{ movie.rating }}</li>
+                                <li>{{movie.duration}}mins</li>
+                                <li>{{ movie.genre }}</li>
+                            </ul>
+                            <p>{{ movie.summary }}</p>
+                        </div>
+                        <a class="btn btn-outline-primary">Watch Now</a>
+                        <a class="btn btn-outline-secondary">Add to list</a>
+                    </div>
+                </div>
+                  {% endfor %}
+              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
             </div>
-            <button>Watch Now</button>
-            <button>Add to list</button>
         </section>
         <hr>
         <section id="fmovies-description">
