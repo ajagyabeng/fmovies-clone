@@ -29,7 +29,7 @@ def home():
 
 @app.route("/get-movies")
 def get_movies():
-    """makes a get request to a movie api to get movie details and adds it to database."""
+    """makes a get request to a movie api to get movie details and adds it to database..."""
     top_movies = requests.get(top_movies_url).json()["items"]
     add_book(top_movies)
     return "<h1>Completed</h1>"
