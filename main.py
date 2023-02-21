@@ -29,7 +29,7 @@ def home():
 
 @app.route("/get-movies")
 def get_movies():
-    """makes a get request to a movie api to get movie details and adds it to database"""
+    """makes a get request to a movie api to get movie details and adds it to database."""
     top_movies = requests.get(top_movies_url).json()["items"]
     add_book(top_movies)
     return "<h1>Completed</h1>"
@@ -39,8 +39,10 @@ def get_movies():
 def update_movie_details():
     movies = Movies.query.all()
     for movie in movies:
-        movie_details = requests.get(f"{update_movies_url}{movie.movie_id}").json()
-        movie_to_update = Movies.query.filter_by(movie_id=movie.movie_id).first()
+        movie_details = requests.get(
+            f"{update_movies_url}{movie.movie_id}").json()
+        movie_to_update = Movies.query.filter_by(
+            movie_id=movie.movie_id).first()
         update_details(movie_to_update, movie_details)
     return "Done"
 
@@ -49,9 +51,11 @@ def update_movie_details():
 def update_banner():
     movies = Movies.query.all()
     for movie in movies:
-        movie_details = requests.get(f"{update_movies_banner_img}{movie.movie_id}").json()
+        movie_details = requests.get(
+            f"{update_movies_banner_img}{movie.movie_id}").json()
         # Fix NoneType error - some movies don't have image details so returns null
-        movie_to_update = Movies.query.filter_by(movie_id=movie.movie_id).first()
+        movie_to_update = Movies.query.filter_by(
+            movie_id=movie.movie_id).first()
         img = first_item(movie_details["items"])
         update_details(movie_to_update, img)
     return "Done"
